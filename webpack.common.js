@@ -26,6 +26,14 @@ module.exports = {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.gif$/,
+        type: "asset/inline",
+      },
+      {
+        test: /\.(ttf|eot|svg)$/,
+        type: "asset/resource",
+      },
 
       {
         test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|ico|svg)(\?[a-z0-9=.]+)?$/,
