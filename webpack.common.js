@@ -31,13 +31,24 @@ module.exports = {
         type: "asset/inline",
       },
       {
-        test: /\.(ttf|eot|svg)$/,
+        test: /\.(ttf|eot)$/,
         type: "asset/resource",
       },
 
       {
-        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|ico|svg)(\?[a-z0-9=.]+)?$/,
-        use: ["url-loader?limit=100000"],
+        test: /\.svg/,
+        use: {
+          loader: "svg-url-loader",
+          options: {
+            // make all svg images to work in IE
+            iesafe: true,
+          },
+        },
+      },
+
+      {
+        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|ico)(\?[a-z0-9=.]+)?$/i,
+        use: ["url-loader?limit=100000", "file-loader"],
       },
 
       {
